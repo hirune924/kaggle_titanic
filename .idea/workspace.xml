@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56cda7e2-4ddc-49a0-9d64-35b166dd0408" name="Default" comment="" />
+    <list default="true" id="56cda7e2-4ddc-49a0-9d64-35b166dd0408" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/ckpt/checkpoint" afterPath="$PROJECT_DIR$/ckpt/checkpoint" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-0.data-00000-of-00001" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-0.index" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-0.meta" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-10000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-10000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-10000.index" afterPath="$PROJECT_DIR$/ckpt/model-10000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-10000.meta" afterPath="$PROJECT_DIR$/ckpt/model-10000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-20000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-20000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-20000.index" afterPath="$PROJECT_DIR$/ckpt/model-20000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-20000.meta" afterPath="$PROJECT_DIR$/ckpt/model-20000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-30000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-30000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-30000.index" afterPath="$PROJECT_DIR$/ckpt/model-30000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-30000.meta" afterPath="$PROJECT_DIR$/ckpt/model-30000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-40000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-40000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-40000.index" afterPath="$PROJECT_DIR$/ckpt/model-40000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-40000.meta" afterPath="$PROJECT_DIR$/ckpt/model-40000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-60000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-60000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-60000.index" afterPath="$PROJECT_DIR$/ckpt/model-60000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-60000.meta" afterPath="$PROJECT_DIR$/ckpt/model-60000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-70000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-70000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-70000.index" afterPath="$PROJECT_DIR$/ckpt/model-70000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-70000.meta" afterPath="$PROJECT_DIR$/ckpt/model-70000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-80000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-80000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-80000.index" afterPath="$PROJECT_DIR$/ckpt/model-80000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-80000.meta" afterPath="$PROJECT_DIR$/ckpt/model-80000.meta" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-90000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-90000.data-00000-of-00001" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-90000.index" afterPath="$PROJECT_DIR$/ckpt/model-90000.index" />
+      <change beforePath="$PROJECT_DIR$/ckpt/model-90000.meta" afterPath="$PROJECT_DIR$/ckpt/model-90000.meta" />
+      <change beforePath="$PROJECT_DIR$/preprocess.py" afterPath="$PROJECT_DIR$/preprocess.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +55,8 @@
       <file leaf-file-name="preprocess.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/preprocess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+            <state relative-caret-position="-215">
+              <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
                 <element signature="e#22#45#0" expanded="true" />
               </folding>
@@ -146,6 +177,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="session" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="/usr/local/lib/python2.7/dist-packages/tensorflow/python/client" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="titanic" />
+      <option name="SCRIPT_NAME" value="/usr/local/lib/python2.7/dist-packages/tensorflow/python/client/session.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -164,14 +213,16 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.train" />
       <item index="1" class="java.lang.String" itemvalue="Python.preprocess" />
+      <item index="2" class="java.lang.String" itemvalue="Python.session" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="3">
         <item index="0" class="java.lang.String" itemvalue="Python.preprocess" />
-        <item index="1" class="java.lang.String" itemvalue="Python.train" />
+        <item index="1" class="java.lang.String" itemvalue="Python.session" />
+        <item index="2" class="java.lang.String" itemvalue="Python.train" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +254,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937434" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -267,10 +318,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/tensorflow/python/client/session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="1350" column="0" lean-forward="true" selection-start-line="1350" selection-start-column="0" selection-end-line="1350" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+        <state relative-caret-position="-215">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
           </folding>

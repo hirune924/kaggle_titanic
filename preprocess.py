@@ -7,9 +7,10 @@ import pandas as pd
 from sklearn import preprocessing
 from sklearn.feature_extraction import DictVectorizer
 
+train_size = 800
+
 
 def preprocess():
-    train_size = 750
 
     df = pd.read_csv('data/train.csv')
 
@@ -25,7 +26,7 @@ def preprocess():
     vectorizer = DictVectorizer(sparse=False)
     y_np = vectorizer.fit_transform(d)
     y_np = np.eye(2)[y_np.astype(np.int64)]
-
+    y_np = np.reshape(y_np, [-1, 2])
     [x_train, x_test] = np.vsplit(x_np, [train_size]) # 入力データを訓練データとテストデータに分ける
     [y_train, y_test] = np.vsplit(y_np, [train_size]) # ラベルを訓練データをテストデータに分ける
     return [x_train, x_test], [y_train, y_test]
@@ -33,9 +34,11 @@ def preprocess():
 
 def inference(inputs):
     fc1 = tf.layers.dense(inputs=inputs, units=100, activation=tf.nn.leaky_relu,
-                          bias_initializer=tf.truncated_normal_initializer, name="fc1")
+                          bias_initializer=tf.truncated_normal_initializer,
+                          activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc1")
     fc2 = tf.layers.dense(inputs=fc1, units=100, activation=tf.nn.leaky_relu,
-                          bias_initializer=tf.truncated_normal_initializer, name="fc2")
+                          bias_initializer=tf.truncated_normal_initializer,
+                          activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc2")
     output = tf.layers.dense(inputs=fc2, units=2, activation=None, name="output")
     return output
 
@@ -46,13 +49,14 @@ def loss(truth, predict):
 
 
 def training(losses):
-    return tf.train.AdamOptimizer(learning_rate=0.01).minimize(losses)
+    #return tf.train.MomentumOptimizer(learning_rate=0.01, momentum=0.25).minimize(losses)
+    return tf.train.AdamOptimizer(learning_rate=0.001).minimize(losses)
 
 
 def main(argv=None):
     x_train, y_train = preprocess()
     x = tf.placeholder(tf.float32, shape=(None, 8), name='inputs')
-    y = tf.placeholder(tf.float32, shape=(None, 1, 2), name='truth')
+    y = tf.placeholder(tf.float32, shape=(None, 2), name='truth')
     batch_size = 100
     predict = inference(x)
 
@@ -67,7 +71,7 @@ def main(argv=None):
 
         for epoch in range(100):
             for i in range(100000):
-                ind = np.random.choice(750, batch_size)
+                ind = np.random.choice(train_size, batch_size)
                 x_train_batch = x_train[0][ind]
                 y_train_batch = y_train[0][ind]
 
@@ -79,8 +83,7 @@ def main(argv=None):
                 if i % 10000 == 0:
                     saver.save(sess, 'ckpt/model', global_step=i)
 
-                    correct_prediction = tf.equal(tf.argmax(predict, 1), tf.argmax(y[0], 1))
-                    
+                    correct_prediction = tf.equal(tf.argmax(predict, 1), tf.argmax(y, 1))
                     # Calculate accuracy
                     accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
                     print "Accuracy:", accuracy.eval({x: x_train[1], y: y_train[1]})
