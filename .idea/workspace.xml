@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56cda7e2-4ddc-49a0-9d64-35b166dd0408" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ckpt/checkpoint" afterPath="$PROJECT_DIR$/ckpt/checkpoint" />
-      <change beforePath="$PROJECT_DIR$/ckpt/model-10000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-10000.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/ckpt/model-10000.index" afterPath="$PROJECT_DIR$/ckpt/model-10000.index" />
-      <change beforePath="$PROJECT_DIR$/ckpt/model-10000.meta" afterPath="$PROJECT_DIR$/ckpt/model-10000.meta" />
-      <change beforePath="$PROJECT_DIR$/ckpt/model-20000.data-00000-of-00001" afterPath="$PROJECT_DIR$/ckpt/model-20000.data-00000-of-00001" />
-      <change beforePath="$PROJECT_DIR$/ckpt/model-20000.index" afterPath="$PROJECT_DIR$/ckpt/model-20000.index" />
-      <change beforePath="$PROJECT_DIR$/ckpt/model-20000.meta" afterPath="$PROJECT_DIR$/ckpt/model-20000.meta" />
-      <change beforePath="$PROJECT_DIR$/preprocess.py" afterPath="$PROJECT_DIR$/train.py" />
-      <change beforePath="$PROJECT_DIR$/train.py" afterPath="$PROJECT_DIR$/dataset_test.py" />
+      <change beforePath="$PROJECT_DIR$/train.py" afterPath="$PROJECT_DIR$/train.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +26,8 @@
       <file leaf-file-name="train.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+            <state relative-caret-position="415">
+              <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
               <folding>
                 <element signature="e#22#45#0" expanded="true" />
               </folding>
@@ -59,8 +50,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/train.py" />
         <option value="$PROJECT_DIR$/preprocess.py" />
+        <option value="$PROJECT_DIR$/train.py" />
       </list>
     </option>
   </component>
@@ -303,8 +294,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="68" column="16" lean-forward="false" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+        <state relative-caret-position="415">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding>
             <element signature="e#22#45#0" expanded="true" />
           </folding>

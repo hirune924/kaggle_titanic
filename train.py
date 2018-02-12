@@ -32,14 +32,17 @@ def preprocess():
     return [x_train, x_test], [y_train, y_test]
 
 
-def inference(inputs):
+def inference(inputs, isTrain):
     fc1 = tf.layers.dense(inputs=inputs, units=100, activation=tf.nn.leaky_relu,
                           bias_initializer=tf.truncated_normal_initializer,
                           activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc1")
-    fc2 = tf.layers.dense(inputs=fc1, units=100, activation=tf.nn.leaky_relu,
+    drop1 = tf.layers.dropout(fc1, rate=0.5, training=isTrain)
+    fc2 = tf.layers.dense(inputs=drop1, units=100, activation=tf.nn.leaky_relu,
                           bias_initializer=tf.truncated_normal_initializer,
                           activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc2")
-    output = tf.layers.dense(inputs=fc2, units=2, activation=None, name="output")
+    drop2 = tf.layers.dropout(fc2, rate=0.5, training=isTrain)
+
+    output = tf.layers.dense(inputs=drop2, units=2, activation=None, name="output")
     return output
 
 
@@ -57,8 +60,9 @@ def main(argv=None):
     x_train, y_train = preprocess()
     x = tf.placeholder(tf.float32, shape=(None, 8), name='inputs')
     y = tf.placeholder(tf.float32, shape=(None, 2), name='truth')
+    train = tf.placeholder(tf.bool, name='isTrain')
     batch_size = 100
-    predict = inference(x)
+    predict = inference(x, train)
 
     losses = loss(y, predict)
 
@@ -75,9 +79,9 @@ def main(argv=None):
                 x_train_batch = x_train[0][ind]
                 y_train_batch = y_train[0][ind]
 
-                sess.run(train_step, feed_dict={x: x_train_batch, y: y_train_batch})
+                sess.run(train_step, feed_dict={x: x_train_batch, y: y_train_batch, train: True})
                 if i % 1000 == 0:
-                    loss_val = sess.run(losses, feed_dict={x: x_train_batch, y: y_train_batch})
+                    loss_val = sess.run(losses, feed_dict={x: x_train_batch, y: y_train_batch, train: False})
                     print ('Step:%d, Loss:%f' % (i, loss_val))
 
                 if i % 10000 == 0:
@@ -86,7 +90,7 @@ def main(argv=None):
                     correct_prediction = tf.equal(tf.argmax(predict, 1), tf.argmax(y, 1))
                     # Calculate accuracy
                     accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
-                    print "Accuracy:", accuracy.eval({x: x_train[1], y: y_train[1]})
+                    print "Accuracy:", accuracy.eval({x: x_train[1], y: y_train[1], train: False})
 
 
 if __name__ == '__main__':
