@@ -17,10 +17,11 @@ def preprocess():
     labelEncoder = preprocessing.LabelEncoder()
 
     df['Sex'] = labelEncoder.fit_transform(df['Sex'])
-    df['Cabin'] = labelEncoder.fit_transform(df['Cabin'])
+    #df['Cabin'] = labelEncoder.fit_transform(df['Cabin'])
     df['Embarked'] = labelEncoder.fit_transform(df['Embarked'])
 
-    x_np = np.array(df[['Age', 'Pclass', 'Sex', 'SibSp', 'Parch', 'Fare', 'Cabin', 'Embarked']].fillna(0))
+    #x_np = np.array(df[['Age', 'Pclass', 'Sex', 'SibSp', 'Parch', 'Fare', 'Cabin', 'Embarked']].fillna(0))
+    x_np = np.array(df[['Age', 'Pclass', 'Sex', 'SibSp', 'Parch', 'Fare', 'Embarked']].fillna(0))
 
     d = df[['Survived']].to_dict('record')
     vectorizer = DictVectorizer(sparse=False)
@@ -58,7 +59,7 @@ def training(losses):
 
 def main(argv=None):
     x_train, y_train = preprocess()
-    x = tf.placeholder(tf.float32, shape=(None, 8), name='inputs')
+    x = tf.placeholder(tf.float32, shape=(None, 7), name='inputs')
     y = tf.placeholder(tf.float32, shape=(None, 2), name='truth')
     train = tf.placeholder(tf.bool, name='isTrain')
     batch_size = 100
