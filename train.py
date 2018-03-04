@@ -86,7 +86,7 @@ def main(argv=None):
                     print ('Step:%d, Loss:%f' % (i, loss_val))
 
                 if i % 10000 == 0:
-                    #saver.save(sess, 'ckpt/model', global_step=i)
+                    saver.save(sess, 'ckpt/model', global_step=i)
 
                     correct_prediction = tf.equal(tf.argmax(predict, 1), tf.argmax(y, 1))
                     # Calculate accuracy

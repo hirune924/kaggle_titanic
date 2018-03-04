@@ -8,11 +8,15 @@ df = pd.read_csv('data/train.csv')
 targets = ['Sex', 'Embarked']
 
 for target in targets:
-    df1 = df[target].drop_duplicates().reset_index(drop=True)
+    df1 = df[target].dropna(how='all').drop_duplicates().reset_index(drop=True)
 
-    csv = ''
+    csv = 'nan,0,'
+    for i in range(df1.size):
+        csv = csv + str(0) + ','
+    csv = csv + '\n'
+
     for idx, d in enumerate(df1):
-        csv = csv + str(d) + ',' + str(idx) + ','
+        csv = csv + str(d) + ',' + str(idx+1) + ','
         for i in range(df1.size):
             if i == idx:
                 csv = csv + str(1) + ','
