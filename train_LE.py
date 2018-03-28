@@ -35,18 +35,14 @@ def preprocess():
     ##print list_embarked
     df_sex = pd.DataFrame(list_sex,columns=['male','female'])
     df_embarked = pd.DataFrame(list_embarked,columns=['S','C','Q'])
-    print df_sex
-    print df_embarked
+    ##print df_sex
+    ##print df_embarked
+
     #全体dfにマージ
+    df_preprocessed = pd.concat([df[['Age', 'Pclass', 'SibSp', 'Parch', 'Fare']], df_sex, df_embarked], axis=1).fillna(0)
 
-    #labelEncoder = preprocessing.LabelEncoder()
-
-    #df['Sex'] = labelEncoder.fit_transform(df['Sex'])
-    #df['Cabin'] = labelEncoder.fit_transform(df['Cabin'])
-    #df['Embarked'] = labelEncoder.fit_transform(df['Embarked'])
-
-    #x_np = np.array(df[['Age', 'Pclass', 'Sex', 'SibSp', 'Parch', 'Fare', 'Cabin', 'Embarked']].fillna(0))
-    x_np = np.array(df[['Age', 'Pclass', 'Sex', 'SibSp', 'Parch', 'Fare', 'Embarked']].fillna(0))
+    print df_preprocessed
+    x_np = np.array(df_preprocessed)
 
     d = df[['Survived']].to_dict('record')
     vectorizer = DictVectorizer(sparse=False)
@@ -79,13 +75,12 @@ def loss(truth, predict):
 
 def training(losses):
     #return tf.train.MomentumOptimizer(learning_rate=0.01, momentum=0.25).minimize(losses)
-    return tf.train.AdamOptimizer(learning_rate=0.001).minimize(losses)
+    return tf.train.AdamOptimizer(learning_rate=0.0005).minimize(losses)
 
 
 def main(argv=None):
     x_train, y_train = preprocess()
-    exit()
-    x = tf.placeholder(tf.float32, shape=(None, 7), name='inputs')
+    x = tf.placeholder(tf.float32, shape=(None, 10), name='inputs')
     y = tf.placeholder(tf.float32, shape=(None, 2), name='truth')
     train = tf.placeholder(tf.bool, name='isTrain')
     batch_size = 100
