@@ -15,25 +15,29 @@ def preprocess():
 
     df = pd.read_csv('data/train.csv')
 
-    #dictを読み込む
+    #変換用dict jsonを読み込む
     targets = ['Sex', 'Embarked']
     with open('dict/Sex.json') as f:
         json_sex = json.load(f)
 
     with open('dict/Embarked.json') as f:
         json_embarked = json.load(f)
-    print json_embarked
+    ##print json_embarked
 
-    #df_sex,df_embarkedを生成
+    #挿入用DataFrameを生成
     list_sex = []
     for i, v in df['Sex'].fillna('').iteritems():
         list_sex.append(json_sex[v][1:])
     list_embarked = []
     for i, v in df['Embarked'].fillna('').iteritems():
         list_embarked.append(json_embarked[v][1:])
-    print list_sex
-    print list_embarked
-    #dfにマージ
+    ##print list_sex
+    ##print list_embarked
+    df_sex = pd.DataFrame(list_sex,columns=['male','female'])
+    df_embarked = pd.DataFrame(list_embarked,columns=['S','C','Q'])
+    print df_sex
+    print df_embarked
+    #全体dfにマージ
 
     #labelEncoder = preprocessing.LabelEncoder()
 
