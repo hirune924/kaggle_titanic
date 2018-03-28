@@ -59,8 +59,9 @@ def inference(inputs, isTrain):
 
     output = tf.layers.dense(inputs=drop2, units=2, activation=None, name="output")
 
-    output_softmax = tf.nn.softmax(output)
-    return output_softmax
+    #output_softmax = tf.nn.softmax(output)
+    output_argmax = tf.argmax(output, 1)
+    return output_argmax
 
 
 def main(argv=None):
@@ -80,7 +81,8 @@ def main(argv=None):
             ##x_batch = [inp]
             ##print x_batch
             inf = sess.run(predict, feed_dict={x: [inp], train: False})
-            print i,int(inf[0,0]*100),int(inf[0,1]*100)
+            #print i,int(inf[0,0]*100),int(inf[0,1]*100)
+            print i, inf
 
 if __name__ == '__main__':
     main()

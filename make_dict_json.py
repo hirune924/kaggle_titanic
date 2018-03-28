@@ -5,7 +5,7 @@ import pandas as pd
 
 df = pd.read_csv('data/train.csv')
 
-targets = ['Sex', 'Embarked']
+targets = ['Sex', 'Embarked', 'Survived']
 
 for target in targets:
     df1 = df[target].dropna(how='all').drop_duplicates().reset_index(drop=True)

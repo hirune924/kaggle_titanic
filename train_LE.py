@@ -22,6 +22,9 @@ def preprocess():
 
     with open('dict/Embarked.json') as f:
         json_embarked = json.load(f)
+
+    with open('dict/Survived.json') as f:
+        json_survived = json.load(f)
     ##print json_embarked
 
     #挿入用DataFrameを生成
@@ -44,11 +47,13 @@ def preprocess():
     print df_preprocessed
     x_np = np.array(df_preprocessed)
 
-    d = df[['Survived']].to_dict('record')
-    vectorizer = DictVectorizer(sparse=False)
-    y_np = vectorizer.fit_transform(d)
-    y_np = np.eye(2)[y_np.astype(np.int64)]
-    y_np = np.reshape(y_np, [-1, 2])
+    #preprocess label data
+    list_survived = []
+    for i, v in df['Survived'].fillna('').iteritems():
+        list_survived.append(json_survived[str(v)][1:])
+    y_np = np.array(list_survived)
+
+    #train test dataset 分割
     [x_train, x_test] = np.vsplit(x_np, [train_size]) # 入力データを訓練データとテストデータに分ける
     [y_train, y_test] = np.vsplit(y_np, [train_size]) # ラベルを訓練データをテストデータに分ける
     return [x_train, x_test], [y_train, y_test]
