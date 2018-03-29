@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn import preprocessing
 from sklearn.feature_extraction import DictVectorizer
 
-train_size = 800
+train_size = 891
 
 
 def preprocess():

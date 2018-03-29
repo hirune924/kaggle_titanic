@@ -75,7 +75,7 @@ def main(argv=None):
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
-        saver.restore(sess, "ckpt/model-15-30000")
+        saver.restore(sess, "ckpt/model-9-70000")
 
         for i, inp in enumerate(x_test):
             ##x_batch = [inp]
