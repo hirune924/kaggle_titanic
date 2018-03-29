@@ -16,7 +16,6 @@ def preprocess():
     df = pd.read_csv('data/train.csv')
 
     #変換用dict jsonを読み込む
-    targets = ['Sex', 'Embarked']
     with open('dict/Sex.json') as f:
         json_sex = json.load(f)
 
@@ -25,7 +24,6 @@ def preprocess():
 
     with open('dict/Survived.json') as f:
         json_survived = json.load(f)
-    ##print json_embarked
 
     #挿入用DataFrameを生成
     list_sex = []
@@ -34,12 +32,9 @@ def preprocess():
     list_embarked = []
     for i, v in df['Embarked'].fillna('').iteritems():
         list_embarked.append(json_embarked[v][1:])
-    ##print list_sex
-    ##print list_embarked
+
     df_sex = pd.DataFrame(list_sex,columns=['male','female'])
     df_embarked = pd.DataFrame(list_embarked,columns=['S','C','Q'])
-    ##print df_sex
-    ##print df_embarked
 
     #全体dfにマージ
     df_preprocessed = pd.concat([df[['Age', 'Pclass', 'SibSp', 'Parch', 'Fare']], df_sex, df_embarked], axis=1).fillna(0)
@@ -56,6 +51,7 @@ def preprocess():
     #train test dataset 分割
     [x_train, x_test] = np.vsplit(x_np, [train_size]) # 入力データを訓練データとテストデータに分ける
     [y_train, y_test] = np.vsplit(y_np, [train_size]) # ラベルを訓練データをテストデータに分ける
+
     return [x_train, x_test], [y_train, y_test]
 
 
@@ -78,9 +74,9 @@ def loss(truth, predict):
     return losses
 
 
-def training(losses):
+def training(losses, learning_rate):
     #return tf.train.MomentumOptimizer(learning_rate=0.01, momentum=0.25).minimize(losses)
-    return tf.train.AdamOptimizer(learning_rate=0.0005).minimize(losses)
+    return tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(losses)
 
 
 def main(argv=None):
@@ -88,31 +84,44 @@ def main(argv=None):
     x = tf.placeholder(tf.float32, shape=(None, 10), name='inputs')
     y = tf.placeholder(tf.float32, shape=(None, 2), name='truth')
     train = tf.placeholder(tf.bool, name='isTrain')
+    learning_rate = tf.placeholder(tf.float32, name='learning_rate')
     batch_size = 100
     predict = inference(x, train)
 
     losses = loss(y, predict)
 
-    train_step = training(losses)
+    train_step = training(losses, learning_rate)
 
     saver = tf.train.Saver()
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
 
+        lr = 0.001
         for epoch in range(100):
+            if epoch > 2 :
+                lr = 0.0005
+            if epoch > 4 :
+                lr = 0.0001
+            if epoch > 6 :
+                lr = 0.00005
+            if epoch > 8 :
+                lr = 0.00001
+            if epoch > 10 :
+                lr = 0.000005
+            print epoch, lr
             for i in range(100000):
                 ind = np.random.choice(train_size, batch_size)
                 x_train_batch = x_train[0][ind]
                 y_train_batch = y_train[0][ind]
 
-                sess.run(train_step, feed_dict={x: x_train_batch, y: y_train_batch, train: True})
+                sess.run(train_step, feed_dict={x: x_train_batch, y: y_train_batch, train: True, learning_rate: lr})
                 if i % 1000 == 0:
                     loss_val = sess.run(losses, feed_dict={x: x_train_batch, y: y_train_batch, train: False})
                     print ('Step:%d, Loss:%f' % (i, loss_val))
 
                 if i % 10000 == 0:
-                    saver.save(sess, 'ckpt/model', global_step=i)
+                    saver.save(sess, 'ckpt/model-'+str(epoch), global_step=i)
 
                     correct_prediction = tf.equal(tf.argmax(predict, 1), tf.argmax(y, 1))
                     # Calculate accuracy

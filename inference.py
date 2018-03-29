@@ -59,7 +59,7 @@ def inference(inputs, isTrain):
 
     output = tf.layers.dense(inputs=drop2, units=2, activation=None, name="output")
 
-    #output_softmax = tf.nn.softmax(output)
+    output_softmax = tf.nn.softmax(output)
     output_argmax = tf.argmax(output, 1)
     return output_argmax
 
@@ -75,14 +75,14 @@ def main(argv=None):
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
-        saver.restore(sess, "ckpt/model-90000")
+        saver.restore(sess, "ckpt/model-15-30000")
 
         for i, inp in enumerate(x_test):
             ##x_batch = [inp]
             ##print x_batch
             inf = sess.run(predict, feed_dict={x: [inp], train: False})
             #print i,int(inf[0,0]*100),int(inf[0,1]*100)
-            print i, inf
+            print inf[0]
 
 if __name__ == '__main__':
     main()
