@@ -57,10 +57,12 @@ def preprocess():
 
 def inference(inputs, isTrain):
     fc1 = tf.layers.dense(inputs=inputs, units=100, activation=tf.nn.leaky_relu,
+                          kernel_initializer=tf.truncated_normal_initializer,
                           bias_initializer=tf.truncated_normal_initializer,
                           activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc1")
     drop1 = tf.layers.dropout(fc1, rate=0.5, training=isTrain)
     fc2 = tf.layers.dense(inputs=drop1, units=100, activation=tf.nn.leaky_relu,
+                          kernel_initializer=tf.truncated_normal_initializer,
                           bias_initializer=tf.truncated_normal_initializer,
                           activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc2")
     drop2 = tf.layers.dropout(fc2, rate=0.5, training=isTrain)
