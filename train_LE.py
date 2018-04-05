@@ -66,8 +66,13 @@ def inference(inputs, isTrain):
                           bias_initializer=tf.truncated_normal_initializer,
                           activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc2")
     drop2 = tf.layers.dropout(fc2, rate=0.5, training=isTrain)
+    fc3 = tf.layers.dense(inputs=drop2, units=100, activation=tf.nn.leaky_relu,
+                          kernel_initializer=tf.truncated_normal_initializer,
+                          bias_initializer=tf.truncated_normal_initializer,
+                          activity_regularizer=tf.contrib.layers.l2_regularizer, name="fc3")
+    drop3 = tf.layers.dropout(fc3, rate=0.5, training=isTrain)
 
-    output = tf.layers.dense(inputs=drop2, units=2, activation=None, name="output")
+    output = tf.layers.dense(inputs=drop3, units=2, activation=None, name="output")
     return output
 
 
